@@ -16,6 +16,15 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link th:href=@{/css/styles.css} rel="stylesheet" />
+        <!-- SearchBox Submit -->
+        <script>
+            var searchbox = document.getElementById("searchbox")
+            $(searchbox).on('keyup', function (e) {
+                if (e.key === 'Enter' || e.keyCode === 13) {
+                    document.getElementById("searchbox").submit();
+                }
+            });
+        </script>
     </head>
     <body>
         <!-- Navigation-->
@@ -43,6 +52,11 @@
                             <h1>نقدینو، نقدی نو</h1>
                             <span class="subheading">بلاگی اختصاصی برای نقد و برسی آثار سینمایی دنیا</span>
                         </div>
+                        <div style="margin-top: 25px;">
+                            <form id="searchform">
+                                <input id="searchbox" type="text" placeholder="جست‌وجوی فیلم یا سریال" class="input-group input-group-text">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,23 +64,70 @@
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
+                <!-- Movies -->
+                <div class="row px-4 px-lg-5 moviecontainer">
+                    <div class="col movieposter">
+                        <a href="movie?">
+                        <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0096895">
+                        <div class="postername">
+                            اسم فیلم
+                        </div>
+                        </a>
+                    </div>
+                    <div class="col movieposter">
+                        <a href="movie?">
+                            <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0095895">
+                            <div class="postername">
+                                اسم فیلم
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col movieposter">
+                        <a href="movie?">
+                            <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0096845">
+                            <div class="postername">
+                                اسم فیلم
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col movieposter">
+                        <a href="movie?">
+                            <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0111161">
+                            <div class="postername">
+                                اسم فیلم
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col movieposter">
+                        <a href="movie?">
+                            <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0468569">
+                            <div class="postername">
+                                اسم فیلم
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col movieposter">
+                        <a href="movie?">
+                            <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0468563">
+                            <div class="postername">
+                                اسم فیلم
+                            </div>
+                        </a>
+                    </div>
+                </div>
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
                     <div class="post-preview">
                         <a href="post">
-                            <h2 dir="rtl" class="post-title">عنوان پست</h2>
-                            <h3 dir="rtl" class="post-subtitle">شرح خلاصه پست</h3>
+                            <h2 class="post-title">عنوان پست</h2>
+                            <h3 class="post-subtitle">شرح خلاصه پست</h3>
                         </a>
-                        <p dir="rtl" class="post-meta">
+                        <p class="post-meta">
                             از:
                             <a href="#!">علی</a>
                             در تاریخ: September 24, 2023
                         </p>
                     </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Pager-->
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">پست‌های قدیمی‌تر →</a></div>
                 </div>
             </div>
         </div>
@@ -75,7 +136,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; Naqdino 2024</div>
                     </div>
                 </div>
             </div>
