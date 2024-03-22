@@ -10808,3 +10808,25 @@ header.masthead .post-heading .meta a {
 .post-title {
   font-family: Lalezar;
 }
+
+.dashbtn {
+  background-color: #6e3130;
+  border: 1px solid #6e3130;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 7px;
+}
