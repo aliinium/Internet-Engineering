@@ -10810,9 +10810,9 @@ header.masthead .post-heading .meta a {
 }
 
 .dashbtn {
-  background-color: #6e3130;
-  border: 1px solid #6e3130;
-  border-radius: 4px;
+  background-color: #9A3B3B;
+  border: 1px solid #9A3B3B;
+  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
   color: #fff;
@@ -10829,4 +10829,15 @@ header.masthead .post-heading .meta a {
   -webkit-user-select: none;
   touch-action: manipulation;
   margin-bottom: 7px;
+}
+
+.dashmain {
+  padding: 10px;
+  border-radius: 10px 0 0 10px;
+  background-color: #E2C799;
+}
+.dashside {
+  border-radius: 0 10px 10px 0;
+  background-color: #C08261;
+  color: #ffffff;
 }
