@@ -10811,9 +10811,8 @@ header.masthead .post-heading .meta a {
 
 .dashbtn {
   background-color: #9A3B3B;
-  border: 1px solid #9A3B3B;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-shadow: rgba(0, 0, 0, .3) 0 2px 4px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -10840,4 +10839,28 @@ header.masthead .post-heading .meta a {
   border-radius: 0 10px 10px 0;
   background-color: #C08261;
   color: #ffffff;
+}
+
+.accountverif {
+  background-color: green;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, .3) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  outline: none;
+  outline: 0;
+  padding: 10px 5px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 7px;
+}
+
+.dashmaincontent {
+  font-size: 1rem;
 }
