@@ -17,7 +17,27 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link th:href=@{/css/styles.css} rel="stylesheet" />
         <!-- SearchBox Submit -->
+        <script th:src=@{/js/getdatafromapi.js}></script>
         <script>
+            GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0096895", "mn1");
+            GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0096895", "pst1");
+
+            GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt1832382", "mn2");
+            GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt1832382", "pst2");
+
+            GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0137523", "mn3");
+            GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0137523", "pst3");
+
+            GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0113161", "mn4");
+            GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0113161", "pst4");
+
+            GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0468569", "mn5");
+            GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0468569", "pst5");
+
+            GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt3032476", "mn6");
+            GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt3032476", "pst6");
+
+
             var searchbox = document.getElementById("searchbox")
             $(searchbox).on('keyup', function (e) {
                 if (e.key === 'Enter' || e.keyCode === 13) {
@@ -68,50 +88,38 @@
                 <div class="row px-4 px-lg-5 moviecontainer">
                     <div class="col movieposter">
                         <a href="movie?">
-                        <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0096895">
-                        <div class="postername">
-                            اسم فیلم
-                        </div>
+                        <img class="movieimage" id="pst1">
+                        <div id="mn1" class="postername"></div>
                         </a>
                     </div>
                     <div class="col movieposter">
                         <a href="movie?">
-                            <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0095895">
-                            <div class="postername">
-                                اسم فیلم
-                            </div>
+                            <img class="movieimage" id="pst2">
+                            <div id="mn2" class="postername"></div>
                         </a>
                     </div>
                     <div class="col movieposter">
                         <a href="movie?">
-                            <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0096845">
-                            <div class="postername">
-                                اسم فیلم
-                            </div>
+                            <img class="movieimage" id="pst3">
+                            <div id="mn3" class="postername"></div>
                         </a>
                     </div>
                     <div class="col movieposter">
                         <a href="movie?">
-                            <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0111161">
-                            <div class="postername">
-                                اسم فیلم
-                            </div>
+                            <img class="movieimage" id="pst4">
+                            <div id="mn4" class="postername"></div>
                         </a>
                     </div>
                     <div class="col movieposter">
                         <a href="movie?">
-                            <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0468569">
-                            <div class="postername">
-                                اسم فیلم
-                            </div>
+                            <img class="movieimage" id="pst5">
+                            <div id="mn5" class="postername"></div>
                         </a>
                     </div>
                     <div class="col movieposter">
                         <a href="movie?">
-                            <img class="movieimage" src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0468563">
-                            <div class="postername">
-                                اسم فیلم
-                            </div>
+                            <img class="movieimage" id="pst6">
+                            <div id="mn6" class="postername"></div>
                         </a>
                     </div>
                 </div>
