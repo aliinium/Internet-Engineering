@@ -17,6 +17,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link th:href=@{/css/styles.css} rel="stylesheet" />
     <!-- SearchBox Submit -->
+    <script th:src=@{/js/moviepagecontroller.js}></script>
     <script>
         var searchbox = document.getElementById("searchbox")
         $(searchbox).on('keyup', function (e) {
@@ -68,33 +69,29 @@
         <div class="post-preview">
             <div class="row">
                 <div class="col">
-                    <h2 class="post-title" style="text-align: center">
-                        The Dark Night
-                    </h2>
+                    <h2 id="movieNameYear" class="post-title" style="text-align: center">?</h2>
                     <h6 class="post-subtitle">
                         <p>
                             کارگردان:
-                            <span>Christopher Nolan</span>
+                            <span id="movieDirectorName">?</span>
                         </p>
                         <p>
                             ژانر:
-                            <span>Action, Crime, Drama</span>
+                            <span id="movieGenre">?</span>
                         </p>
                         <p>
                             بازیگران:
-                            <span>Christian Bale, Heath Ledger, Aaron Eckhart</span>
+                            <span id="movieActors">?</span>
                         </p>
                         <p>
                             خلاصه داستان:</br>
-                            <span>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham,
-                                Batman must accept one of the greatest psychological and physical tests of his ability
-                                to fight injustice.</span>
+                            <span id="moviePlot" dir="ltr">?</span>
                         </p>
                     </h6>
                 </div>
                 <div class="col col-lg-2">
                     <div class="row">
-                        <img src="http://img.omdbapi.com/?apikey=1a5410af&i=tt0468569">
+                        <img id="moviePoster">
                     </div>
                     <div class="row" style="margin-top: 5px;">
                         <form>

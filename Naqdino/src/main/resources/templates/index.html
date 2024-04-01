@@ -21,21 +21,27 @@
         <script>
             GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0096895", "mn1");
             GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0096895", "pst1");
+            GetIMDbIDFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0096895", "movielink1")
 
             GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt1832382", "mn2");
             GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt1832382", "pst2");
+            GetIMDbIDFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt1832382", "movielink2")
 
             GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0137523", "mn3");
             GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0137523", "pst3");
+            GetIMDbIDFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0137523", "movielink3")
 
             GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0113161", "mn4");
             GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0113161", "pst4");
+            GetIMDbIDFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0113161", "movielink4")
 
             GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0468569", "mn5");
             GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0468569", "pst5");
+            GetIMDbIDFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt0468569", "movielink5")
 
             GetTitleFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt3032476", "mn6");
             GetPosterFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt3032476", "pst6");
+            GetIMDbIDFromAPI("https://omdbapi.com/?apikey=1a5410af&i=tt3032476", "movielink6")
 
 
             var searchbox = document.getElementById("searchbox")
@@ -87,37 +93,37 @@
                 <!-- Movies -->
                 <div class="row px-4 px-lg-5 moviecontainer">
                     <div class="col movieposter">
-                        <a href="movie?">
+                        <a id="movielink1">
                         <img class="movieimage" id="pst1">
                         <div id="mn1" class="postername"></div>
                         </a>
                     </div>
                     <div class="col movieposter">
-                        <a href="movie?">
+                        <a id="movielink2">
                             <img class="movieimage" id="pst2">
                             <div id="mn2" class="postername"></div>
                         </a>
                     </div>
                     <div class="col movieposter">
-                        <a href="movie?">
+                        <a id="movielink3">
                             <img class="movieimage" id="pst3">
                             <div id="mn3" class="postername"></div>
                         </a>
                     </div>
                     <div class="col movieposter">
-                        <a href="movie?">
+                        <a id="movielink4">
                             <img class="movieimage" id="pst4">
                             <div id="mn4" class="postername"></div>
                         </a>
                     </div>
                     <div class="col movieposter">
-                        <a href="movie?">
+                        <a id="movielink5">
                             <img class="movieimage" id="pst5">
                             <div id="mn5" class="postername"></div>
                         </a>
                     </div>
                     <div class="col movieposter">
-                        <a href="movie?">
+                        <a id="movielink6">
                             <img class="movieimage" id="pst6">
                             <div id="mn6" class="postername"></div>
                         </a>

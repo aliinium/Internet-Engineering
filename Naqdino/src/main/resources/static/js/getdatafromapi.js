@@ -13,5 +13,5 @@ function GetPosterFromAPI (url, ElementID) {
 function GetIMDbIDFromAPI (url, ElementID) {
     fetch(url)
         .then(response => response.json())
-        .then(response => document.getElementById(ElementID).src = response.imdbID);
+        .then(response => document.getElementById(ElementID).href = "movie?id=" + response.imdbID);
 }
