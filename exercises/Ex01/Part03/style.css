@@ -1,0 +1,33 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 30px;
+}
+
+li {
+    list-style: decimal-leading-zero;
+    margin-bottom: 10px;
+}
+li::marker {
+    color: #2D9596;
+}
+
+.title {
+    font-size: 20pt;
+    font-weight: bold;
+    color: #2D9596;
+    text-shadow: 2px 2px 5px #B4B4B8;
+}
+
+.center {
+    text-align: center;
+}
+
+.main {
+    border: 1px solid #000000;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    margin: auto;
+    padding: 10px 20px 10px 20px;
+    width: 600px;
+    box-shadow: 2px 2px 5px #B4B4B8;
+}
