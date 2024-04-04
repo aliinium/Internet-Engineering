@@ -4,8 +4,8 @@ body {
 }
 
 li {
-    list-style: decimal-leading-zero;
-    margin-bottom: 10px;
+    list-style-type: "✦  ";
+    margin-top: 10px;
 }
 li::marker {
     color: #2D9596;
