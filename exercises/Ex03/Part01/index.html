@@ -21,7 +21,9 @@
                             <label for="txtCodeMelli">کد ملی یا شماره شناسنامه: </label>
                         </td>
                         <td>
-                            <input id="txtCodeMelli" type="text">
+                            <input id="txtCodeMelli" onkeyup="checkCodeMelliFunc()" type="text">
+                            <span id="txtCodeMelli_failed" class="failed" >خطا !</span>
+                            <span id="txtCodeMelli_acceptable" class="acceptable">قابل قبول !</span>
                         </td>
                     </tr>
                     <tr>
@@ -37,6 +39,8 @@
                         </td>
                         <td>
                             <input id="txtSerialSh" type="text">
+                            <span id="txtSerialSh_failed" class="failed" >خطا !</span>
+                            <span id="txtSerialSh_acceptable" class="acceptable">قابل قبول !</span>
                         </td>
                     </tr> 
                     <tr>
@@ -52,6 +56,8 @@
                         </td>
                         <td>
                             <input id="txtBirthDate" type="text">
+                            <span id="txtBirthDate_failed" class="failed" >خطا !</span>
+                            <span id="txtBirthDate_acceptable" class="acceptable">قابل قبول !</span>
                         </td>
                     </tr> 
                     <tr>
@@ -67,6 +73,8 @@
                         </td>
                         <td>
                             <input id="txtAddress" type="text">
+                            <span id="txtAddress_failed" class="failed" >خطا !</span>
+                            <span id="txtAddress_acceptable" class="acceptable">قابل قبول !</span>
                         </td>
                     </tr> 
                     <tr>
@@ -80,5 +88,6 @@
         </div>
     </div>
 </div>
+<script src="script.js"></script>
 </body>
 </html>

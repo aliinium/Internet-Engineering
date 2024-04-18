@@ -41,3 +41,17 @@ body {
     font-size: 7pt;
     padding-bottom: 15px;
 }
+
+.failed {
+    color: #E72929;
+    font-weight: bold;
+    font-size: 9.5pt;
+    visibility: hidden;
+}
+
+.acceptable {
+    color: #0D9276;
+    font-weight: bold;
+    font-size: 9.5pt;
+    visibility: hidden;
+}
