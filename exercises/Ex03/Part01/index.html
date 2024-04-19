@@ -21,15 +21,14 @@
                             <label for="txtCodeMelli">کد ملی یا شماره شناسنامه: </label>
                         </td>
                         <td>
-                            <input id="txtCodeMelli" onkeyup="checkCodeMelliFunc()" type="text">
-                            <span id="txtCodeMelli_failed" class="failed" >خطا !</span>
-                            <span id="txtCodeMelli_acceptable" class="acceptable">قابل قبول !</span>
+                            <input id="txtCodeMelli" onkeyup="checkCodeMelliFunc()" type="text" placeholder="0123456789 | 123456">
+                            <span id="txtCodeMelli_Alert" class="alert"></span>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td class="dis">
-                            توضیحات
+                            <span>کدملی ۱۰ رقمی یا شماره‌شناسنامه تا ۶ رقم و رقم اول غیر صفر</span>
                         </td>
                     </tr>
 
@@ -38,15 +37,14 @@
                             <label for="txtSerialSh">سریال شناسنامه: </label>
                         </td>
                         <td>
-                            <input id="txtSerialSh" type="text">
-                            <span id="txtSerialSh_failed" class="failed" >خطا !</span>
-                            <span id="txtSerialSh_acceptable" class="acceptable">قابل قبول !</span>
+                            <input id="txtSerialSh" onkeyup="checkSerialShFunc()" type="text" placeholder="10/B-123456">
+                            <span id="txtSerialSh_Alert" class="alert"></span>
                         </td>
                     </tr> 
                     <tr>
                         <td></td>
                         <td class="dis">
-                            توضیحات
+                            <span>سریال شناسنامه به صورت: سریال ۶رقمی - سری حرفی/سری عدد</span>
                         </td>
                     </tr>
 
@@ -55,15 +53,14 @@
                             <label for="txtBirthDate">تاریخ تولد: </label>
                         </td>
                         <td>
-                            <input id="txtBirthDate" type="text">
-                            <span id="txtBirthDate_failed" class="failed" >خطا !</span>
-                            <span id="txtBirthDate_acceptable" class="acceptable">قابل قبول !</span>
+                            <input id="txtBirthDate" onkeyup="checkBirthDateFunc()" type="text" placeholder="1300/01/01">
+                            <span id="txtBirthDate_Alert" class="alert"></span>
                         </td>
                     </tr> 
                     <tr>
                         <td></td>
                         <td class="dis">
-                            توضیحات
+                            <span>تاریخ کامل تولد به صورت: روز/ماه/سال که ۶ماه اول سال ۳۱روزه و ۶ماه دوم ۳۰روزه</span>
                         </td>
                     </tr>
 
@@ -72,15 +69,14 @@
                             <label for="txtAddress">آدرس: </label>
                         </td>
                         <td>
-                            <input id="txtAddress" type="text">
-                            <span id="txtAddress_failed" class="failed" >خطا !</span>
-                            <span id="txtAddress_acceptable" class="acceptable">قابل قبول !</span>
+                            <input id="txtAddress" type="text" onkeyup="checkAddressFunc()" placeholder="Tehran - Tehran - Keshavarz Blv. - Laleh St. - 10 - 1234567890">
+                            <span id="txtAddress_Alert" class="alert"></span>
                         </td>
                     </tr> 
                     <tr>
                         <td></td>
                         <td class="dis">
-                            توضیحات
+                            <span>آدرس دقیق پستی به همراه کدپستی به صورت: استان - شهرستان - خیابان اصلی و فرعی - کوچه - پلاک - کدپستی ۱۰رقمی</span>
                         </td>
                     </tr>
                 </table>

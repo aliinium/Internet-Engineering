@@ -31,10 +31,16 @@ body {
 }
 
 .content input {
-    width: 300px;
+    width: 250px;
     padding: 3px 10px;
     border-radius: 4px;
     border: 0.5px solid #000000;
+    direction: ltr;
+    text-align: center;
+}
+#txtAddress {
+    width: 440px;
+    text-align: left;
 }
 
 .dis {
@@ -42,16 +48,21 @@ body {
     padding-bottom: 15px;
 }
 
+.alert {
+    font-weight: bold;
+    font-size: 15pt;
+}
+
 .failed {
     color: #E72929;
     font-weight: bold;
-    font-size: 9.5pt;
+    font-size: 15pt;
     visibility: hidden;
 }
 
 .acceptable {
     color: #0D9276;
     font-weight: bold;
-    font-size: 9.5pt;
+    font-size: 15pt;
     visibility: hidden;
 }
