@@ -1,7 +1,7 @@
 let patternCodeMelli = /^(?:\d{10}|[1-9]\d{0,5})$/;
 let patternSerialSh = /^\d{1,2}\/[A-Za-z]-\d{6}$/;
 let patternBirthDate = /^(\d{4}\/0[1-6]\/((0[1-9]|(1[0-9]|(2[0-9]|(3[0-1]))))))|(\d{4}\/((0[7-9])|(1[0-2]))\/((0[1-9]|(1[0-9]|(2[0-9]|([3][0]))))))$/;
-let patternAddress = /^([\w\s]{2,}-\s)?([\w\s]{2,}-\s)?[\w\s]{2,}-\s[\w\s]{2,}-\s[\w\s]{2,}-\s((\d+)|(\d[\w\s]+))-\s\d{10}$/;
+let patternAddress = /^([\w\s.]{2,}-\s)?([\w\s.]{2,}-\s)?[\w\s.]{2,}-\s[\w\s.]{2,}-\s[\w\s.]{2,}-\s((\d+)|(\d[\w\s.]+))-\s\d{10}$/;
 
 function checkCodeMelliFunc() {
     var txtCodeMelli = document.getElementById("txtCodeMelli");
