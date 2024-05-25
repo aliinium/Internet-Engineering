@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>IE Fourth Exercise - Part 01</title>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>JavaScript Object-Oriented Programming</h1>
+            <h5>شئ‌گرایی در جاوا اسکریپت</h5>
+        </div>
+        <div class="content">
+            <div class="crsList">
+                <p>لیست دروس:</p>
+                <form>
+                    کد درس: <input type="number" id="">
+                    نام درس: <input type="text" id="">
+                    تعداد واحد: <input type="number" id="">
+                    <button type="button" class="btnInsert">ثبت</button>
+                </form>
+                <div id="crsListTbl">
+                </div>
+            </div><hr>
+
+            <div class="insList">
+                <p>لیست اساتید:</p>
+                <form>
+                    کد استاد: <input type="number" id="">
+                    نام و نام‌خانوادگی: <input type="text" id="">
+                    <button type="button" class="btnInsert">ثبت</button>
+                </form>
+                <div id="insListTbl">
+                </div>
+            </div><hr>
+
+            <div class="crpList">
+                <p>لیست دروس ارائه شده:</p>
+                <form>
+                    کد ارائه: <input type="number" id="">
+                    درس: <input type="text" id="">
+                    استاد: <input type="text" id="">
+                    <button type="button" class="btnInsert">ثبت</button>
+                </form>
+                <div id="crpListTbl">
+                </div>
+            </div><hr>
+
+            <div class="stuList">
+                <p>لیست دانشجویان:</p>
+                <form>
+                    شماره دانشجویی: <input type="number" id="stCode">
+                    نام: <input type="text" id="firstName">
+                    نام خانوادگی : <input type="text" id="lastName">
+                    جنسیت : <select id="stGender"><option value="0" selected>مرد</option><option value="1">زن</option></select>
+                    <input type="hidden" id="oldStCode">
+                    <button type="button" class="btnInsert" onclick="saveStudent()">ثبت</button>
+                </form>
+                <span class="alert" id="studentAlert"></span>
+                <div id="stuListTbl">
+                </div>
+            </div><hr>
+
+            <div class="slcList">
+                <p>لیست دروس انتخابی توسط دانشجویان:</p>
+                <form>
+                    دانشجو: <input type="text" id="">
+                    درس ارائه شده: <input type="text" id="">
+                    معدل: <input type="number" id="">
+                    <button type="button" class="btnInsert">ثبت</button>
+                </form>
+                <div id="slcListTbl">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    stArr = []
+</script>
+<script src="classes/student.js"></script>
+<script>
+    createStudentList()
+</script>
+</html>

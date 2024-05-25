@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Relations</title>
+</head>
+<body>
+<script>
+    class Person{
+        constructor(id, name, home_address) {
+            this.id=id;
+            this.name=name;
+            this.home_address=home_address
+        }
+    }
+
+    class Address {
+        constructor(state, city, street, alley, no) {
+            this.state = state
+            this.city = city
+            this.street = street
+            this.alley = alley
+            this.no = no
+        }
+    }
+
+    my_addr = new Address("East Azarbayjan","Tabriz","Emam St.","Tarbiyat",25)
+    p1 = new Person(1,"Amin Mirzayi",my_addr)
+</script>
+</body>
+</html>

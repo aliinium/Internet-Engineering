@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Page</title>
+    <style>
+        tr, td, th {
+            border: 2px solid darkred;
+            border-collapse: collapse;
+        }
+
+        tr:nth-child(odd) {
+            background-color: lightpink;
+        }
+
+        tr:nth-child(even) {
+            background-color: lightskyblue;
+        }
+
+        th {
+            background-color: lightgrey;
+        }
+
+    </style>
+    <script>
+
+        class Student{
+            constructor(stCode, firstName, lastName, gender) {
+                this.stCode = stCode
+                this.firstName = firstName
+                this.lastName = lastName
+                this.gender = gender
+                this.selectedCourses = []
+            }
+                getFullName(){
+                return `${this.firstName}, ${this.lastName}`
+                }
+                getGenderTitle(){
+                    return (this.gender == 0) ? 'Male' : 'Female'
+                }
+                selectCourse(selCourse) {
+                    this.selectedCourses.push(selCourse)
+                }
+
+                calcTotalGrade() {//TODO homework for you
+                }
+        }
+
+
+        function createStudentList() {
+            initElements()
+            if (stArr.length > 0) {
+                createStudentTable()
+            } else {
+                let el = document.getElementById("studentList")
+                el.innerHTML = "No students defined yet"
+            }
+        }
+
+        function initElements() {
+            let stu_def = document.getElementById("student_def")
+            stu_def.style.display = "none"
+            document.getElementById("btnNewStu").disabled = false
+        }
+
+        function createStudentTable() {
+            let tbl = `<table>
+    <tr>
+        <th>Row No</th>
+        <th>Student Code</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th></th>
+        <th></th>
+    </tr>`
+
+            for (let i = 0; i < stArr.length; i++) {
+                tbl += `<tr>
+                    <td>${i + 1}</td>
+                    <td>${stArr[i].stCode}</td>
+                    <td>${stArr[i].firstName}</td>
+                    <td>${stArr[i].lastName}</td>
+                    <td>${stArr[i].getGenderTitle()}</td>
+                    <td><button onclick="prepareEditStudent(${stArr[i].stCode})">Edit</button></td>
+                    <td><button onclick="deleteStudent(${stArr[i].stCode})">Delete</button></td>
+                </tr>`
+            }
+
+            tbl += "</table>"
+
+            let el = document.getElementById("studentList")
+            el.innerHTML = tbl
+        }
+
+        function initStudentDef() {
+            document.getElementById("btnNewStu").disabled = true
+            document.getElementById("stuCode").value = ""
+            document.getElementById("stuFirstName").value = ""
+            document.getElementById("stuLastName").value = ""
+            document.getElementById("stuGender").value = 0
+            document.getElementById("oldStCode").value = "new"
+
+            let stu_def = document.getElementById("student_def")
+            stu_def.style.display = "block"
+            document.getElementById("stuCode").focus()
+        }
+
+        function saveStudent() {
+            let stCode = document.getElementById("stuCode").value
+            let firstName = document.getElementById("stuFirstName").value
+            let lastName = document.getElementById("stuLastName").value
+            let gender = document.getElementById("stuGender").value
+
+            let oldStuCode = document.getElementById("oldStCode").value
+            if (isNaN(oldStuCode)){
+                let stu = new Student(stCode, firstName, lastName, gender)
+                stArr.push(stu)
+            }else{
+                oldStuCode = parseInt(oldStuCode)
+                let idx = getIndexStudent(oldStuCode)
+                if (idx > -1){
+                    stArr[idx].stCode = stCode
+                    stArr[idx].firstName = firstName
+                    stArr[idx].lastName = lastName
+                    stArr[idx].gender = gender
+
+                }
+            }
+
+
+
+            createStudentList()
+        }
+
+        function getIndexStudent(stuCode) {
+            let idx = -1
+            for (let i = 0; i < stArr.length; i++) {
+                if (stArr[i].stCode == stuCode) {
+                    idx = i
+                    break
+                }
+            }
+            return idx
+        }
+
+        function prepareEditStudent(stuCode) {
+            let stuIdx = getIndexStudent(stuCode)
+            if (stuIdx > -1) {
+                let stu = stArr[stuIdx]
+                document.getElementById("btnNewStu").disabled = true
+                document.getElementById("stuCode").value = stu.stCode
+                document.getElementById("stuFirstName").value = stu.firstName
+                document.getElementById("stuLastName").value = stu.lastName
+                document.getElementById("stuGender").value = stu.gender
+                document.getElementById("oldStCode").value = stu.stCode
+
+                let stu_def = document.getElementById("student_def")
+                stu_def.style.display = "block"
+                document.getElementById("stuCode").focus()
+            }
+        }
+
+        function deleteStudent(stuCode){
+
+            let stuIdx = getIndexStudent(stuCode)
+            if (stuIdx > -1) {
+                stArr.splice(stuIdx,1)
+                createStudentList()
+            }
+        }
+    </script>
+</head>
+<body>
+<button id="btnNewStu" onclick="initStudentDef()">Add New Student</button>
+<div id="studentList"></div>
+<div id="student_def">
+    Student Code: <input type="text" id="stuCode"><br>
+    First Name: <input type="text" id="stuFirstName"><br>
+    Last Name: <input type="text" id="stuLastName"><br>
+    <input type="hidden" id="oldStCode">
+    Gender: <select id="stuGender">
+    <option value="0" selected>Male</option>
+    <option value="1">Female</option>
+</select><br>
+    <button onclick="saveStudent()">Save Student</button>
+    <button onclick="initElements()">Cancel</button>
+</div>
+</body>
+
+<script>
+    stArr = []
+
+    createStudentList()
+</script>
+</html>
