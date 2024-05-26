@@ -18,11 +18,11 @@ function createCourseList() {
 function createCourseTable() {
     let tbl =   `   <table class="crsTbl">
                         <tr>
-                            <th>ردیف</th>
+                            <th style="width:5%">ردیف</th>
                             <th>کد درس</th>
-                            <th>نام</th>
+                            <th style="width:40%">نام</th>
                             <th>تعداد واحد</th>
-                            <th colspan="2">عملیات</th>
+                            <th colspan="2" style="width:20%">عملیات</th>
                         </tr>
                 `
 
@@ -47,7 +47,7 @@ function createCourseComboBox() {
     
     for (let i = 0; i < crsArr.length; i++) {
         cmb +=  `
-                    <option>${crsArr[i].crsName}</option>
+                    <option value="${i}">${crsArr[i].crsName}</option>
                 `
     }
 
@@ -70,7 +70,7 @@ function saveCourse() {
 
     let crsIndex = document.getElementById("crsIndex").value
 
-    if (!(crsCode == "" || crsName == "" || crsUnit == "")) {
+    if (crsCode != "" && crsName != "" && crsUnit != "") {
         if (crsIndex === "") {
             let crs = new Course(crsCode, crsName, crsUnit)
             crsArr.push(crs)

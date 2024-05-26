@@ -1,9 +1,9 @@
 slcArr = []
 
 class SelectedCourse {
-    constructor(stuCode, crpCode, grade) {
-        this.stuCode = stuCode;
-        this.crpCode = crpCode;
+    constructor(Student, CoursePres, grade) {
+        this.Student = Student;
+        this.CoursePres = CoursePres;
         this.grade = grade;
     }
 }
@@ -11,27 +11,29 @@ class SelectedCourse {
 function createSelectedCourseList() {
     if (slcArr.length > 0) {
         createSelectedCourseTable()
+        resetSlcForm()
     }
 }
 
 function createSelectedCourseTable() {
     let tbl =   `   <table class="slcTbl">
                         <tr>
-                            <th>ردیف</th>
-                            <th>شماره دانشجویی</th>
-                            <th>کد ارائه</th>
+                            <th style="width:5%">ردیف</th>
+                            <th style="width:25%">شماره دانشجویی</th>
+                            <th style="width:25%">نام و نام‌خانوادگی دانشجو</th>
+                            <th style="width:25%">نام درس (تعداد واحد)</th>
                             <th>معدل</th>
-                            <th colspan="2">عملیات</th>
+                            <th style="width:10%">عملیات</th>
                         </tr>
                 `
 
     for (let i = 0; i < slcArr.length; i++) {
         tbl +=  `   <tr>
                         <td>${i + 1}</td>
-                        <td>${slcArr[i].stuCode}</td>
-                        <td>${slcArr[i].crpCode}</td>
+                        <td>${slcArr[i].Student.stCode}</td>
+                        <td>${slcArr[i].Student.getFullName()}</td>
+                        <td>${slcArr[i].CoursePres.Course.crsName} (${slcArr[i].CoursePres.Course.crsUnit})</td>
                         <td>${slcArr[i].grade}</td>
-                        <td><button class="btnUpdate" onclick="editSelectedCourse(${i})">ویرایش</button></td>
                         <td><button class="btnDelete" onclick="deleteSelectedCourse(${i})">حذف</button></td>
                     </tr>
                 `
@@ -42,41 +44,35 @@ function createSelectedCourseTable() {
 }
 
 function resetSlcForm() {
-    document.getElementById("slcStuCode").value = ""
-    document.getElementById("slcCrpCode").value = ""
+    document.getElementById("slcStuCode").value = "0"
+    document.getElementById("slcCrpCode").value = "0"
     document.getElementById("slcGrade").value = ""
     document.getElementById("slcIndex").value = ""
     document.getElementById("slcAlert").innerHTML = ""
 }
 
 function saveSelectedCourse() {
-    let stuCode = document.getElementById("slcStuCode").value
-    let crpCode = document.getElementById("slcCrpCode").value
-    let grade = document.getElementById("slcGrade").value
-
-    let slcIndex = document.getElementById("slcIndex").value
-
-    if (!(stuCode == "" || crpCode == "" || grade == "")) {
-        if (slcIndex === "") {
-            let slc = new SelectedCourse(stuCode, crpCode, grade)
+    try {
+        let stuIndex = document.getElementById("slcStuCode").value
+        let crpIndex = document.getElementById("slcCrpCode").value
+        let grade = document.getElementById("slcGrade").value
+    
+        let slcIndex = document.getElementById("slcIndex").value
+        
+        if (grade != "") {
+            let stu = stArr[stuIndex]
+            let crp = crpArr[crpIndex]
+            let slc = new SelectedCourse(stu, crp, grade)
             slcArr.push(slc)
 
             document.getElementById("slcAlert").innerHTML = ""
             resetSlcForm()
         } else {
-            slcIndex = parseInt(slcIndex)
-
-            if (slcIndex > -1) {
-                slcArr[slcIndex].stuCode = stuCode
-                slcArr[slcIndex].crpCode = crpCode
-                slcArr[slcIndex].grade = grade
-            }
-
-            resetSlcForm()
+            document.getElementById("slcAlert").innerHTML = "دیتایی وارد نشده."
+            document.getElementById("slcGrade").focus()
         }
-    } else {
-        document.getElementById("slcAlert").innerHTML = "دیتایی وارد نشده."
-        document.getElementById("slcStuCode").focus()
+    } catch {
+        document.getElementById("slcAlert").innerHTML = "خطا"
     }
 
     createSelectedCourseList()
@@ -91,15 +87,5 @@ function deleteSelectedCourse(slcIndex) {
         } else {
             createSelectedCourseList()
         }
-    }
-}
-
-function editSelectedCourse(slcIndex) {
-    if (slcIndex > -1) {
-        let slc = slcArr[slcIndex]
-        document.getElementById("slcStuCode").value = slc.stuCode
-        document.getElementById("slcCrpCode").value = slc.crpCode
-        document.getElementById("slcGrade").value = slc.grade
-        document.getElementById("slcIndex").value = slcIndex
     }
 }

@@ -26,12 +26,12 @@ function createStudentList() {
 function createStudentTable() {
     let tbl =   `   <table class="stuTbl">
                         <tr>
-                            <th>ردیف</th>
-                            <th>شماره دانشجویی</th>
-                            <th>نام</th>
-                            <th>نام‌خانوادگی</th>
+                            <th style="width:5%">ردیف</th>
+                            <th style="width:25%">شماره دانشجویی</th>
+                            <th style="width:25%">نام</th>
+                            <th style="width:25%">نام‌خانوادگی</th>
                             <th>جنسیت</th>
-                            <th colspan="2">عملیات</th>
+                            <th colspan="2" style="width:20%">عملیات</th>
                         </tr>
                 `
 
@@ -57,7 +57,7 @@ function createStudentComboBox() {
     
     for (let i = 0; i < stArr.length; i++) {
         cmb +=  `
-                    <option>${stArr[i].stCode}</option>
+                    <option value="${i}">${stArr[i].stCode}</option>
                 `
     }
 
@@ -82,7 +82,7 @@ function saveStudent() {
 
     let insIndex = document.getElementById("insIndex").value
 
-    if (!(stCode == "" || firstName == "" || lastName == "")) {
+    if (stCode != "" & firstName != "" & lastName != "") {
         if (insIndex === "") {
             let stu = new Student(stCode, firstName, lastName, gender)
             stArr.push(stu)

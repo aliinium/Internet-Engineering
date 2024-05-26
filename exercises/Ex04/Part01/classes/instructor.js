@@ -17,10 +17,10 @@ function createInstructorList() {
 function createInstructorTable() {
     let tbl =   `   <table class="insTbl">
                         <tr>
-                            <th>ردیف</th>
+                            <th style="width:5%">ردیف</th>
                             <th>کد استاد</th>
-                            <th>نام و نام‌خانوادگی</th>
-                            <th colspan="2">عملیات</th>
+                            <th style="width:40%">نام و نام‌خانوادگی</th>
+                            <th colspan="2" style="width:20%">عملیات</th>
                         </tr>
                 `
 
@@ -44,7 +44,7 @@ function createInstructorComboBox() {
     
     for (let i = 0; i < insArr.length; i++) {
         cmb +=  `
-                    <option>${insArr[i].insName}</option>
+                    <option value="${i}">${insArr[i].insName}</option>
                 `
     }
 
@@ -65,7 +65,7 @@ function saveInstructor() {
 
     let insIndex = document.getElementById("insIndex").value
 
-    if (!(insCode == "" || insName == "")) {
+    if (insCode != "" && insName != "") {
         if (insIndex === "") {
             let ins = new Instructor(insCode, insName)
             insArr.push(ins)

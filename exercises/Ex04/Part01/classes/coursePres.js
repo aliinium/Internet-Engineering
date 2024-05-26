@@ -1,10 +1,10 @@
 crpArr = []
 
 class CoursePres {
-    constructor(crpCode, crsCode, insCode) {
+    constructor(crpCode, Course, Instructor) {
         this.crpCode = crpCode;
-        this.crsCode = crsCode;
-        this.insCode = insCode;
+        this.Course = Course;
+        this.Instructor = Instructor;
     }
 }
 
@@ -12,17 +12,18 @@ function createCoursePresList() {
     if (crpArr.length > 0) {
         createCoursePresTable()
         createCoursePresComboBox()
+        resetSlcForm()
     }
 }
 
 function createCoursePresTable() {
     let tbl =   `   <table class="crpTbl">
                         <tr>
-                            <th>ردیف</th>
+                            <th style="width:5%">ردیف</th>
                             <th>کد ارائه</th>
-                            <th>نام درس</th>
-                            <th>نام استاد</th>
-                            <th colspan="2">عملیات</th>
+                            <th style="width:25%">نام درس (تعداد واحد)</th>
+                            <th style="width:25%">نام استاد</th>
+                            <th colspan="2" style="width:20%">عملیات</th>
                         </tr>
                 `
 
@@ -30,8 +31,8 @@ function createCoursePresTable() {
         tbl +=  `   <tr>
                         <td>${i + 1}</td>
                         <td>${crpArr[i].crpCode}</td>
-                        <td>${crpArr[i].crsCode.crsCode}</td>
-                        <td>${crpArr[i].insCode.insCode}</td>
+                        <td>${crpArr[i].Course.crsName} (${crpArr[i].Course.crsUnit})</td>
+                        <td>${crpArr[i].Instructor.insName}</td>
                         <td><button class="btnUpdate" onclick="editCoursePres(${i})">ویرایش</button></td>
                         <td><button class="btnDelete" onclick="deleteCoursePres(${i})">حذف</button></td>
                     </tr>
@@ -47,7 +48,7 @@ function createCoursePresComboBox() {
     
     for (let i = 0; i < crpArr.length; i++) {
         cmb +=  `
-                    <option>${crpArr[i].crpCode}</option>
+                    <option value="${i}">${crpArr[i].crpCode}</option>
                 `
     }
 
@@ -57,40 +58,44 @@ function createCoursePresComboBox() {
 
 function resetCrpForm() {
     document.getElementById("crpCode").value = ""
-    document.getElementById("crpCrsCode").value = ""
-    document.getElementById("crpInsCode").value = ""
+    document.getElementById("crpCrsCode").value = "0"
+    document.getElementById("crpInsCode").value = "0"
     document.getElementById("crpIndex").value = ""
     document.getElementById("crpAlert").innerHTML = ""
 }
 
 function saveCoursePres() {
-    let crpCode = document.getElementById("crpCode").value
-    let crsCode = document.getElementById("crpCrsCode").value
-    let insCode = document.getElementById("crpInsCode").value
+    try {
+        let crpCode = document.getElementById("crpCode").value
+        let crsIndex = document.getElementById("crpCrsCode").value
+        let insIndex = document.getElementById("crpInsCode").value
+    
+        let crpIndex = document.getElementById("crpIndex").value
 
-    let crpIndex = document.getElementById("crpIndex").value
+        if (crpCode != "") {
+            if (crpIndex === "") {
+                let crs = crsArr[crsIndex]
+                let ins = insArr[insIndex]
+                let crp = new CoursePres(crpCode, crs, ins)
+                crpArr.push(crp)
 
-    if (!(crpCode == "" || crsCode == "" || insCode == "")) {
-        if (crpIndex === "") {
-            let crs = new Course(crsCode, crsName, crsUnit)
-            let ins = new Instructor(insCode, insName)
-            let crp = new CoursePres(crpCode, crs, ins)
-            crpArr.push(crp)
+                document.getElementById("crpAlert").innerHTML = ""
+                resetCrpForm()
+            } else {
+                if (crpIndex > -1) {
+                    crpArr[crpIndex].crpCode = crpCode
+                    crpArr[crpIndex].Course = crsArr[crsIndex]
+                    crpArr[crpIndex].Instructor = insArr[insIndex]
+                }
 
-            document.getElementById("crpAlert").innerHTML = ""
-            resetCrpForm()
-        } else {
-            if (crpIndex > -1) {
-                crpArr[crpIndex].crpCode = crpCode
-                crpArr[crpIndex].crsCode.crsCode = crsCode
-                crpArr[crpIndex].insCode.insCode = insCode
+                resetCrpForm()
             }
-
-            resetCrpForm()
+        } else {
+            document.getElementById("crpAlert").innerHTML = "دیتایی وارد نشده."
+            document.getElementById("crpCode").focus()
         }
-    } else {
-        document.getElementById("crpAlert").innerHTML = "دیتایی وارد نشده."
-        document.getElementById("crpCode").focus()
+    } catch {
+        document.getElementById("crpAlert").innerHTML = "خطا"
     }
 
     createCoursePresList()
@@ -113,8 +118,8 @@ function editCoursePres(crpIndex) {
     if (crpIndex > -1) {
         let crp = crpArr[crpIndex]
         document.getElementById("crpCode").value = crp.crpCode
-        document.getElementById("crpCrsCode").value = crp.crsCode.crsCode
-        document.getElementById("crpInsCode").value = crp.insCode.insCode
+        document.getElementById("crpCrsCode").value = ""
+        document.getElementById("crpInsCode").value = ""
         document.getElementById("crpIndex").value = crpIndex
     }
 }
