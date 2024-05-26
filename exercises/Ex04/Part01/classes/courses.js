@@ -31,8 +31,8 @@ function createCourseTable() {
                         <td>${crsArr[i].crsCode}</td>
                         <td>${crsArr[i].crsName}</td>
                         <td>${crsArr[i].crsUnit}</td>
-                        <td><button class="btnUpdate" onclick="editCourse(${crsArr[i].crsCode})">ویرایش</button></td>
-                        <td><button class="btnDelete" onclick="deleteCourse(${crsArr[i].crsCode})">حذف</button></td>
+                        <td><button class="btnUpdate" onclick="editCourse(${i})">ویرایش</button></td>
+                        <td><button class="btnDelete" onclick="deleteCourse(${i})">حذف</button></td>
                     </tr>
                 `
     }
@@ -41,24 +41,11 @@ function createCourseTable() {
     document.getElementById("crsListTbl").innerHTML = tbl
 }
 
-function getIndexCourse(crsCode) {
-    let idx = -1
-
-    for (let i = 0; i < crsArr.length; i++) {
-        if (crsArr[i].crsCode == crsCode) {
-            idx = i
-            break
-        }
-    }
-
-    return idx
-}
-
 function resetCrsForm() {
     document.getElementById("crsCode").value = ""
     document.getElementById("crsName").value = ""
     document.getElementById("crsUnit").value = ""
-    document.getElementById("crsOldCode").value = ""
+    document.getElementById("crsIndex").value = ""
     document.getElementById("crsAlert").innerHTML = ""
 }
 
@@ -67,23 +54,20 @@ function saveCourse() {
     let crsName = document.getElementById("crsName").value
     let crsUnit = document.getElementById("crsUnit").value
 
-    let crsOldCode = document.getElementById("crsOldCode").value
+    let crsIndex = document.getElementById("crsIndex").value
 
     if (!(crsCode == "" || crsName == "" || crsUnit == "")) {
-        if (crsOldCode === "") {
+        if (crsIndex === "") {
             let crs = new Course(crsCode, crsName, crsUnit)
             crsArr.push(crs)
 
             document.getElementById("crsAlert").innerHTML = ""
             resetCrsForm()
         } else {
-            crsOldCode = parseInt(crsOldCode)
-            let idx = getIndexCourse(crsOldCode)
-
-            if (idx > -1) {
-                crsArr[idx].crsCode = crsCode
-                crsArr[idx].crsName = crsName
-                crsArr[idx].crsUnit = crsUnit
+            if (crsIndex > -1) {
+                crsArr[crsIndex].crsCode = crsCode
+                crsArr[crsIndex].crsName = crsName
+                crsArr[crsIndex].crsUnit = crsUnit
             }
 
             resetCrsForm()
@@ -96,11 +80,9 @@ function saveCourse() {
     createCourseList()
 }
 
-function deleteCourse(crsCode) {
-    let crsIdx = getIndexCourse(crsCode)
-
-    if (crsIdx > -1) {
-        crsArr.splice(crsIdx,1)
+function deleteCourse(crsIndex) {
+    if (crsIndex > -1) {
+        crsArr.splice(crsIndex,1)
 
         if (crsArr.length < 1) {
             document.getElementById("crsListTbl").innerHTML = ""
@@ -110,14 +92,12 @@ function deleteCourse(crsCode) {
     }
 }
 
-function editCourse(crsCode) {
-    let crsIdx = getIndexCourse(crsCode)
-
-    if (crsIdx > -1) {
-        let crs = crsArr[crsIdx]
+function editCourse(crsIndex) {
+    if (crsIndex > -1) {
+        let crs = crsArr[crsIndex]
         document.getElementById("crsCode").value = crs.crsCode
         document.getElementById("crsName").value = crs.crsName
         document.getElementById("crsUnit").value = crs.crsUnit
-        document.getElementById("crsOldCode").value = crs.crsCode
+        document.getElementById("crsIndex").value = crsIndex
     }
 }

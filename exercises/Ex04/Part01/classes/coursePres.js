@@ -31,8 +31,8 @@ function createCoursePresTable() {
                         <td>${crpArr[i].crpCode}</td>
                         <td>${crpArr[i].crsCode}</td>
                         <td>${crpArr[i].insCode}</td>
-                        <td><button class="btnUpdate" onclick="editCoursePres(${crpArr[i].crpCode})">ویرایش</button></td>
-                        <td><button class="btnDelete" onclick="deleteCoursePres(${crpArr[i].crpCode})">حذف</button></td>
+                        <td><button class="btnUpdate" onclick="editCoursePres(${i})">ویرایش</button></td>
+                        <td><button class="btnDelete" onclick="deleteCoursePres(${i})">حذف</button></td>
                     </tr>
                 `
     }
@@ -41,24 +41,11 @@ function createCoursePresTable() {
     document.getElementById("crpListTbl").innerHTML = tbl
 }
 
-function getIndexCoursePres(crpCode) {
-    let idx = -1
-
-    for (let i = 0; i < crpArr.length; i++) {
-        if (crpArr[i].crpCode == crpCode) {
-            idx = i
-            break
-        }
-    }
-
-    return idx
-}
-
 function resetCrpForm() {
     document.getElementById("crpCode").value = ""
     document.getElementById("crpCrsCode").value = ""
     document.getElementById("crpInsCode").value = ""
-    document.getElementById("crpOldCode").value = ""
+    document.getElementById("crpIndex").value = ""
     document.getElementById("crpAlert").innerHTML = ""
 }
 
@@ -67,25 +54,20 @@ function saveCoursePres() {
     let crsCode = document.getElementById("crpCrsCode").value
     let insCode = document.getElementById("crpInsCode").value
 
-    let crpOldCode = document.getElementById("crpOldCode").value
+    let crpIndex = document.getElementById("crpIndex").value
 
     if (!(crpCode == "" || crsCode == "" || insCode == "")) {
-        if (crpOldCode === "") {
+        if (crpIndex === "") {
             let crp = new CoursePres(crpCode, crsCode, insCode)
             crpArr.push(crp)
 
             document.getElementById("crpAlert").innerHTML = ""
             resetCrpForm()
         } else {
-            crpOldCode = parseInt(crpOldCode)
-            let idx = getIndexCoursePres(crpOldCode)
-
-            console.log(idx)
-
-            if (idx > -1) {
-                crpArr[idx].crpCode = crpCode
-                crpArr[idx].crsCode = crsCode
-                crpArr[idx].insCode = insCode
+            if (crpIndex > -1) {
+                crpArr[crpIndex].crpCode = crpCode
+                crpArr[crpIndex].crsCode = crsCode
+                crpArr[crpIndex].insCode = insCode
             }
 
             resetCrpForm()
@@ -98,11 +80,9 @@ function saveCoursePres() {
     createCoursePresList()
 }
 
-function deleteCoursePres(crpCode) {
-    let crpIdx = getIndexCoursePres(crpCode)
-
-    if (crpIdx > -1) {
-        crpArr.splice(crpIdx,1)
+function deleteCoursePres(crpIndex) {
+    if (crpIndex > -1) {
+        crpArr.splice(crpIndex,1)
 
         if (crpArr.length < 1) {
             document.getElementById("crpListTbl").innerHTML = ""
@@ -112,14 +92,12 @@ function deleteCoursePres(crpCode) {
     }
 }
 
-function editCoursePres(crpCode) {
-    let crpIdx = getIndexCoursePres(crpCode)
-
-    if (crpIdx > -1) {
-        let crp = crpArr[crpIdx]
+function editCoursePres(crpIndex) {
+    if (crpIndex > -1) {
+        let crp = crpArr[crpIndex]
         document.getElementById("crpCode").value = crp.crpCode
         document.getElementById("crpCrsCode").value = crp.crsCode
         document.getElementById("crpInsCode").value = crp.insCode
-        document.getElementById("crpOldCode").value = crp.crpCode
+        document.getElementById("crpIndex").value = crpIndex
     }
 }

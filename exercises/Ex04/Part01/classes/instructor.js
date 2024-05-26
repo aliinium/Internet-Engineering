@@ -28,8 +28,8 @@ function createInstructorTable() {
                         <td>${i + 1}</td>
                         <td>${insArr[i].insCode}</td>
                         <td>${insArr[i].insName}</td>
-                        <td><button class="btnUpdate" onclick="editInstructor(${insArr[i].insCode})">ویرایش</button></td>
-                        <td><button class="btnDelete" onclick="deleteInstructor(${insArr[i].insCode})">حذف</button></td>
+                        <td><button class="btnUpdate" onclick="editInstructor(${i})">ویرایش</button></td>
+                        <td><button class="btnDelete" onclick="deleteInstructor(${i})">حذف</button></td>
                     </tr>
                 `
     }
@@ -38,23 +38,10 @@ function createInstructorTable() {
     document.getElementById("insListTbl").innerHTML = tbl
 }
 
-function getIndexInstructor(insCode) {
-    let idx = -1
-
-    for (let i = 0; i < insArr.length; i++) {
-        if (insArr[i].insCode == insCode) {
-            idx = i
-            break
-        }
-    }
-
-    return idx
-}
-
 function resetInsForm() {
     document.getElementById("insCode").value = ""
     document.getElementById("insName").value = ""
-    document.getElementById("insOldCode").value = ""
+    document.getElementById("insIndex").value = ""
     document.getElementById("insAlert").innerHTML = ""
 }
 
@@ -62,22 +49,19 @@ function saveInstructor() {
     let insCode = document.getElementById("insCode").value
     let insName = document.getElementById("insName").value
 
-    let insOldCode = document.getElementById("insOldCode").value
+    let insIndex = document.getElementById("insIndex").value
 
     if (!(insCode == "" || insName == "")) {
-        if (insOldCode === "") {
+        if (insIndex === "") {
             let ins = new Instructor(insCode, insName)
             insArr.push(ins)
 
             document.getElementById("insAlert").innerHTML = ""
             resetInsForm()
         } else {
-            insOldCode = parseInt(insOldCode)
-            let idx = getIndexInstructor(insOldCode)
-
-            if (idx > -1) {
-                insArr[idx].insCode = insCode
-                insArr[idx].insName = insName
+            if (insIndex > -1) {
+                insArr[insIndex].insCode = insCode
+                insArr[insIndex].insName = insName
             }
 
             resetInsForm()
@@ -90,11 +74,9 @@ function saveInstructor() {
     createInstructorList()
 }
 
-function deleteInstructor(insCode) {
-    let insIdx = getIndexInstructor(insCode)
-
-    if (insIdx > -1) {
-        insArr.splice(insIdx,1)
+function deleteInstructor(insIndex) {
+    if (insIndex > -1) {
+        insArr.splice(insIndex,1)
 
         if (insArr.length < 1) {
             document.getElementById("insListTbl").innerHTML = ""
@@ -104,13 +86,11 @@ function deleteInstructor(insCode) {
     }
 }
 
-function editInstructor(insCode) {
-    let insIdx = getIndexInstructor(insCode)
-
-    if (insIdx > -1) {
-        let ins = insArr[insIdx]
+function editInstructor(insIndex) {
+    if (insIndex > -1) {
+        let ins = insArr[insIndex]
         document.getElementById("insCode").value = ins.insCode
         document.getElementById("insName").value = ins.insName
-        document.getElementById("insOldCode").value = ins.insCode
+        document.getElementById("insIndex").value = insIndex
     }
 }

@@ -41,8 +41,8 @@ function createStudentTable() {
                         <td>${stArr[i].firstName}</td>
                         <td>${stArr[i].lastName}</td>
                         <td>${stArr[i].getGenderTitle()}</td>
-                        <td><button class="btnUpdate" onclick="editStudent(${stArr[i].stCode})">ویرایش</button></td>
-                        <td><button class="btnDelete" onclick="deleteStudent(${stArr[i].stCode})">حذف</button></td>
+                        <td><button class="btnUpdate" onclick="editStudent(${i})">ویرایش</button></td>
+                        <td><button class="btnDelete" onclick="deleteStudent(${i})">حذف</button></td>
                     </tr>
                 `
     }
@@ -51,25 +51,12 @@ function createStudentTable() {
     document.getElementById("stuListTbl").innerHTML = tbl
 }
 
-function getIndexStudent(stuCode) {
-    let idx = -1
-
-    for (let i = 0; i < stArr.length; i++) {
-        if (stArr[i].stCode == stuCode) {
-            idx = i
-            break
-        }
-    }
-
-    return idx
-}
-
 function resetStForm() {
     document.getElementById("stCode").value = ""
     document.getElementById("stFirstName").value = ""
     document.getElementById("stLastName").value = ""
     document.getElementById("stGender").value = "0"
-    document.getElementById("oldStCode").value = ""
+    document.getElementById("insIndex").value = ""
     document.getElementById("studentAlert").innerHTML = ""
 }
 
@@ -79,24 +66,21 @@ function saveStudent() {
     let lastName = document.getElementById("stLastName").value
     let gender = document.getElementById("stGender").value
 
-    let oldStuCode = document.getElementById("oldStCode").value
+    let insIndex = document.getElementById("insIndex").value
 
     if (!(stCode == "" || firstName == "" || lastName == "")) {
-        if (oldStuCode === "") {
+        if (insIndex === "") {
             let stu = new Student(stCode, firstName, lastName, gender)
             stArr.push(stu)
 
             document.getElementById("studentAlert").innerHTML = ""
             resetStForm()
         } else {
-            oldStuCode = parseInt(oldStuCode)
-            let idx = getIndexStudent(oldStuCode)
-
-            if (idx > -1) {
-                stArr[idx].stCode = stCode
-                stArr[idx].firstName = firstName
-                stArr[idx].lastName = lastName
-                stArr[idx].gender = gender
+            if (insIndex > -1) {
+                stArr[insIndex].stCode = stCode
+                stArr[insIndex].firstName = firstName
+                stArr[insIndex].lastName = lastName
+                stArr[insIndex].gender = gender
             }
 
             resetStForm()
@@ -109,11 +93,9 @@ function saveStudent() {
     createStudentList()
 }
 
-function deleteStudent(stCode) {
-    let stuIdx = getIndexStudent(stCode)
-
-    if (stuIdx > -1) {
-        stArr.splice(stuIdx,1)
+function deleteStudent(insIndex) {
+    if (insIndex > -1) {
+        stArr.splice(insIndex,1)
 
         if (stArr.length < 1) {
             document.getElementById("stuListTbl").innerHTML = ""
@@ -123,15 +105,13 @@ function deleteStudent(stCode) {
     }
 }
 
-function editStudent(stCode) {
-    let stuIdx = getIndexStudent(stCode)
-
-    if (stuIdx > -1) {
-        let stu = stArr[stuIdx]
+function editStudent(insIndex) {
+    if (insIndex > -1) {
+        let stu = stArr[insIndex]
         document.getElementById("stCode").value = stu.stCode
         document.getElementById("stFirstName").value = stu.firstName
         document.getElementById("stLastName").value = stu.lastName
         document.getElementById("stGender").value = stu.gender
-        document.getElementById("oldStCode").value = stu.stCode
+        document.getElementById("insIndex").value = insIndex
     }
 }
