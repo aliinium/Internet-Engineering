@@ -1,17 +1,6 @@
-class Course {
-    constructor(id, title, unitNo) {
-        this.id = id;
-        this.title = title;
-        this.unitNo = unitNo;
-    }
-}
 
-class Instructor {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-    }
-}
+
+
 
 class CoursePres {
     constructor(id, course, instructor) {

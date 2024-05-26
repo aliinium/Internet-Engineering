@@ -16,11 +16,13 @@
             <div class="crsList">
                 <p>لیست دروس:</p>
                 <form>
-                    کد درس: <input type="number" id="">
-                    نام درس: <input type="text" id="">
-                    تعداد واحد: <input type="number" id="">
-                    <button type="button" class="btnInsert">ثبت</button>
+                    کد درس: <input type="number" id="crsCode">
+                    نام درس: <input type="text" id="crsName">
+                    تعداد واحد: <input type="number" id="crsUnit">
+                    <input type="hidden" id="crsOldCode">
+                    <button type="button" class="btnInsert" onclick="saveCourse()">ثبت</button>
                 </form>
+                <span class="alert" id="crsAlert"></span>
                 <div id="crsListTbl">
                 </div>
             </div><hr>
@@ -28,10 +30,12 @@
             <div class="insList">
                 <p>لیست اساتید:</p>
                 <form>
-                    کد استاد: <input type="number" id="">
-                    نام و نام‌خانوادگی: <input type="text" id="">
-                    <button type="button" class="btnInsert">ثبت</button>
+                    کد استاد: <input type="number" id="insCode">
+                    نام و نام‌خانوادگی: <input type="text" id="insName">
+                    <input type="hidden" id="insOldCode">
+                    <button type="button" class="btnInsert" onclick="saveInstructor()">ثبت</button>
                 </form>
+                <span class="alert" id="insAlert"></span>
                 <div id="insListTbl">
                 </div>
             </div><hr>
@@ -39,11 +43,13 @@
             <div class="crpList">
                 <p>لیست دروس ارائه شده:</p>
                 <form>
-                    کد ارائه: <input type="number" id="">
-                    درس: <input type="text" id="">
-                    استاد: <input type="text" id="">
-                    <button type="button" class="btnInsert">ثبت</button>
+                    کد ارائه: <input type="number" id="crpCode">
+                    درس: <input type="text" id="crpCrsCode">
+                    استاد: <input type="text" id="crpInsCode">
+                    <input type="hidden" id="crpOldCode">
+                    <button type="button" class="btnInsert" onclick="saveCoursePres()">ثبت</button>
                 </form>
+                <span class="alert" id="crpAlert"></span>
                 <div id="crpListTbl">
                 </div>
             </div><hr>
@@ -52,8 +58,8 @@
                 <p>لیست دانشجویان:</p>
                 <form>
                     شماره دانشجویی: <input type="number" id="stCode">
-                    نام: <input type="text" id="firstName">
-                    نام خانوادگی : <input type="text" id="lastName">
+                    نام: <input type="text" id="stFirstName">
+                    نام خانوادگی : <input type="text" id="stLastName">
                     جنسیت : <select id="stGender"><option value="0" selected>مرد</option><option value="1">زن</option></select>
                     <input type="hidden" id="oldStCode">
                     <button type="button" class="btnInsert" onclick="saveStudent()">ثبت</button>
@@ -69,7 +75,7 @@
                     دانشجو: <input type="text" id="">
                     درس ارائه شده: <input type="text" id="">
                     معدل: <input type="number" id="">
-                    <button type="button" class="btnInsert">ثبت</button>
+                    <button type="button" class="btnInsert" onclick="">ثبت</button>
                 </form>
                 <div id="slcListTbl">
                 </div>
@@ -77,10 +83,10 @@
         </div>
     </div>
 </body>
-<script>
-    stArr = []
-</script>
 <script src="classes/student.js"></script>
+<script src="classes/courses.js"></script>
+<script src="classes/instructor.js"></script>
+<script src="classes/coursePres.js"></script>
 <script>
     createStudentList()
 </script>

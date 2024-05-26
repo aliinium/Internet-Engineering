@@ -1,3 +1,5 @@
+stArr = []
+
 class Student{
     constructor(stCode, firstName, lastName, gender) {
         this.stCode = stCode
@@ -39,7 +41,7 @@ function createStudentTable() {
                         <td>${stArr[i].firstName}</td>
                         <td>${stArr[i].lastName}</td>
                         <td>${stArr[i].getGenderTitle()}</td>
-                        <td><button class="btnUpdate" onclick="">ویرایش</button></td>
+                        <td><button class="btnUpdate" onclick="editStudent(${stArr[i].stCode})">ویرایش</button></td>
                         <td><button class="btnDelete" onclick="deleteStudent(${stArr[i].stCode})">حذف</button></td>
                     </tr>
                 `
@@ -51,33 +53,55 @@ function createStudentTable() {
 
 function getIndexStudent(stuCode) {
     let idx = -1
+
     for (let i = 0; i < stArr.length; i++) {
         if (stArr[i].stCode == stuCode) {
             idx = i
             break
         }
     }
+
     return idx
+}
+
+function resetStForm() {
+    document.getElementById("stCode").value = ""
+    document.getElementById("stFirstName").value = ""
+    document.getElementById("stLastName").value = ""
+    document.getElementById("stGender").value = "0"
+    document.getElementById("oldStCode").value = ""
+    document.getElementById("studentAlert").innerHTML = ""
 }
 
 function saveStudent() {
     let stCode = document.getElementById("stCode").value
-    let firstName = document.getElementById("firstName").value
-    let lastName = document.getElementById("lastName").value
+    let firstName = document.getElementById("stFirstName").value
+    let lastName = document.getElementById("stLastName").value
     let gender = document.getElementById("stGender").value
 
+    let oldStuCode = document.getElementById("oldStCode").value
+
     if (!(stCode == "" || firstName == "" || lastName == "")) {
-        let stu = new Student(stCode, firstName, lastName, gender)
-        stArr.push(stu)
+        if (oldStuCode === "") {
+            let stu = new Student(stCode, firstName, lastName, gender)
+            stArr.push(stu)
 
-        document.getElementById("stCode").value = ""
-        document.getElementById("firstName").value = ""
-        document.getElementById("lastName").value = ""
-        document.getElementById("stGender").value = "0"
+            document.getElementById("studentAlert").innerHTML = ""
+            resetStForm()
+        } else {
+            oldStuCode = parseInt(oldStuCode)
+            let idx = getIndexStudent(oldStuCode)
 
-        document.getElementById("studentAlert").innerHTML = ""
-    } 
-    else {
+            if (idx > -1) {
+                stArr[idx].stCode = stCode
+                stArr[idx].firstName = firstName
+                stArr[idx].lastName = lastName
+                stArr[idx].gender = gender
+            }
+
+            resetStForm()
+        }
+    } else {
         document.getElementById("studentAlert").innerHTML = "دیتایی وارد نشده."
         document.getElementById("stCode").focus()
     }
@@ -90,10 +114,24 @@ function deleteStudent(stCode) {
 
     if (stuIdx > -1) {
         stArr.splice(stuIdx,1)
+
         if (stArr.length < 1) {
             document.getElementById("stuListTbl").innerHTML = ""
         } else {
-            createStudentTable()
+            createStudentList()
         }
+    }
+}
+
+function editStudent(stCode) {
+    let stuIdx = getIndexStudent(stCode)
+
+    if (stuIdx > -1) {
+        let stu = stArr[stuIdx]
+        document.getElementById("stCode").value = stu.stCode
+        document.getElementById("stFirstName").value = stu.firstName
+        document.getElementById("stLastName").value = stu.lastName
+        document.getElementById("stGender").value = stu.gender
+        document.getElementById("oldStCode").value = stu.stCode
     }
 }
