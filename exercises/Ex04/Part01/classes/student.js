@@ -19,6 +19,7 @@ class Student{
 function createStudentList() {
     if (stArr.length > 0) {
         createStudentTable()
+        createStudentComboBox()
     }
 }
 
@@ -49,6 +50,19 @@ function createStudentTable() {
 
     tbl += "</table>"
     document.getElementById("stuListTbl").innerHTML = tbl
+}
+
+function createStudentComboBox() {
+    cmb = `<select id="slcStuCode">`
+    
+    for (let i = 0; i < stArr.length; i++) {
+        cmb +=  `
+                    <option>${stArr[i].stCode}</option>
+                `
+    }
+
+    cmb += `</select>`
+    document.getElementById("slcStuCombo").innerHTML = cmb
 }
 
 function resetStForm() {
@@ -99,6 +113,7 @@ function deleteStudent(insIndex) {
 
         if (stArr.length < 1) {
             document.getElementById("stuListTbl").innerHTML = ""
+            document.getElementById("slcStuCombo").innerHTML = cmb
         } else {
             createStudentList()
         }

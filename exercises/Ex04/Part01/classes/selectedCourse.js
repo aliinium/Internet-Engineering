@@ -1,7 +1,7 @@
 slcArr = []
 
 class SelectedCourse {
-    constructor(stuCode, crpCode, grade, slcIndex) {
+    constructor(stuCode, crpCode, grade) {
         this.stuCode = stuCode;
         this.crpCode = crpCode;
         this.grade = grade;

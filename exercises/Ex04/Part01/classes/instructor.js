@@ -10,6 +10,7 @@ class Instructor {
 function createInstructorList() {
     if (insArr.length > 0) {
         createInstructorTable()
+        createInstructorComboBox()
     }
 }
 
@@ -36,6 +37,19 @@ function createInstructorTable() {
 
     tbl += "</table>"
     document.getElementById("insListTbl").innerHTML = tbl
+}
+
+function createInstructorComboBox() {
+    cmb = `<select id="crpInsCode">`
+    
+    for (let i = 0; i < insArr.length; i++) {
+        cmb +=  `
+                    <option>${insArr[i].insName}</option>
+                `
+    }
+
+    cmb += "</select>"
+    document.getElementById("crpInsCombo").innerHTML = cmb
 }
 
 function resetInsForm() {
@@ -80,6 +94,7 @@ function deleteInstructor(insIndex) {
 
         if (insArr.length < 1) {
             document.getElementById("insListTbl").innerHTML = ""
+            document.getElementById("crpInsCombo").innerHTML = "<select></select>"
         } else {
             createInstructorList()
         }

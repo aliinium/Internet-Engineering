@@ -11,6 +11,7 @@ class Course {
 function createCourseList() {
     if (crsArr.length > 0) {
         createCourseTable()
+        createCourseComboBox();
     }
 }
 
@@ -39,6 +40,19 @@ function createCourseTable() {
 
     tbl += "</table>"
     document.getElementById("crsListTbl").innerHTML = tbl
+}
+
+function createCourseComboBox() {
+    cmb = `<select id="crpCrsCode">`
+    
+    for (let i = 0; i < crsArr.length; i++) {
+        cmb +=  `
+                    <option>${crsArr[i].crsName}</option>
+                `
+    }
+
+    cmb += "</select>"
+    document.getElementById("crpCrsCombo").innerHTML = cmb
 }
 
 function resetCrsForm() {
@@ -86,6 +100,7 @@ function deleteCourse(crsIndex) {
 
         if (crsArr.length < 1) {
             document.getElementById("crsListTbl").innerHTML = ""
+            document.getElementById("crpCrsCombo").innerHTML = "<select></select>"
         } else {
             createCourseList()
         }

@@ -44,8 +44,8 @@
                 <p>لیست دروس ارائه شده:</p>
                 <form>
                     کد ارائه: <input type="number" id="crpCode">
-                    کد درس: <input type="number" id="crpCrsCode">
-                    کد استاد: <input type="number" id="crpInsCode">
+                    نام درس: <span id="crpCrsCombo"><select></select></span>
+                    نام استاد: <span id="crpInsCombo"><select></select></span>
                     <input type="hidden" id="crpIndex">
                     <button type="button" class="btnInsert" onclick="saveCoursePres()">ثبت</button>
                 </form>
@@ -72,8 +72,8 @@
             <div class="slcList">
                 <p>لیست دروس انتخابی توسط دانشجویان:</p>
                 <form>
-                    شماره دانشجویی: <input type="number" id="slcStuCode">
-                    کد درس ارائه شده: <input type="number" id="slcCrpCode">
+                    شماره دانشجویی: <span id="slcStuCombo"><select></select></span>
+                    کد درس ارائه شده: <span id="slcCrpCombo"><select></select></span>
                     معدل: <input type="number" id="slcGrade">
                     <input type="hidden" id="slcIndex">
                     <button type="button" class="btnInsert" onclick="saveSelectedCourse()">ثبت</button>
