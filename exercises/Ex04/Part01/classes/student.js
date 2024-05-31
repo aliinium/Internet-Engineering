@@ -32,8 +32,8 @@ function getAvrage(stuIndex) {
     } else {
         return "NaN"
     }
-    
-    return score / unitSum
+
+    return (score / unitSum).toFixed(2)
 }
 
 function createStudentList() {
