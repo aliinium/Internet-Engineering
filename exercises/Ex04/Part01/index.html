@@ -72,11 +72,13 @@
             <div class="slcList">
                 <p>لیست دروس انتخابی توسط دانشجویان:</p>
                 <form>
-                    شماره دانشجویی: <span id="slcStuCombo"><select></select></span>
+                    <span id="addSelectCourse" style="display: none;">
+                    شماره دانشجویی: <span id="slcStuCombo"><select id="slcStuCode"></select></span>
                     کد درس ارائه شده: <span id="slcCrpCombo"><select></select></span>
-                    معدل: <input type="number" id="slcGrade">
+                    نمره درس: <input type="number" id="slcGrade">
                     <input type="hidden" id="slcIndex">
                     <button type="button" class="btnInsert" onclick="saveSelectedCourse()">ثبت</button>
+                    </span>
                 </form>
                 <span class="alert" id="slcAlert"></span>
                 <div id="slcListTbl">

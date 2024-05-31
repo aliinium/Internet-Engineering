@@ -96,6 +96,10 @@ input::-webkit-inner-spin-button {
 .btnDelete {
     background-color: #EE4E4E;
 }
+.btnSelecteCourse {
+    background-color: #8E3E63;
+    width: 90px;
+}
 
 .alert {
     color: #EE4E4E;

@@ -1,4 +1,53 @@
-crpArr = []
+crpArr = [
+    {
+        "crpCode": "40201001",
+        "Course": {
+            "crsCode": "1000102",
+            "crsName": "مهندسی اینترنت",
+            "crsUnit": "3"
+        },
+        "Instructor": {
+            "insCode": "90001",
+            "insName": "سجاد پیراهش"
+        }
+    },
+    {
+        "crpCode": "40201002",
+        "Course": {
+            "crsCode": "1000101",
+            "crsName": "مهندسی نرم‌افزار",
+            "crsUnit": "3"
+        },
+        "Instructor": {
+            "insCode": "90002",
+            "insName": "نسیم ارغا"
+        }
+    },
+    {
+        "crpCode": "40201003",
+        "Course": {
+            "crsCode": "1000201",
+            "crsName": "آز. مهندسی نرم‌افزار",
+            "crsUnit": "1"
+        },
+        "Instructor": {
+            "insCode": "90002",
+            "insName": "نسیم ارغا"
+        }
+    },
+    {
+        "crpCode": "40201004",
+        "Course": {
+            "crsCode": "1000103",
+            "crsName": "روش پژوهش و ارائه",
+            "crsUnit": "2"
+        },
+        "Instructor": {
+            "insCode": "90003",
+            "insName": "مهدی میرزابکی"
+        }
+    }
+]
 
 class CoursePres {
     constructor(crpCode, Course, Instructor) {

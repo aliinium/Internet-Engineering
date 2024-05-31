@@ -1,4 +1,25 @@
-crsArr = []
+crsArr = [
+    {
+        "crsCode": "1000101",
+        "crsName": "مهندسی نرم‌افزار",
+        "crsUnit": "3"
+    },
+    {
+        "crsCode": "1000102",
+        "crsName": "مهندسی اینترنت",
+        "crsUnit": "3"
+    },
+    {
+        "crsCode": "1000103",
+        "crsName": "روش پژوهش و ارائه",
+        "crsUnit": "2"
+    },
+    {
+        "crsCode": "1000201",
+        "crsName": "آز. مهندسی نرم‌افزار",
+        "crsUnit": "1"
+    }
+]
 
 class Course {
     constructor(crsCode, crsName, crsUnit) {

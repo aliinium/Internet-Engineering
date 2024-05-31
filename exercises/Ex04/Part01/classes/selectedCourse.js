@@ -11,6 +11,7 @@ class SelectedCourse {
 function createSelectedCourseList() {
     if (slcArr.length > 0) {
         createSelectedCourseTable()
+        createStudentList()
         resetSlcForm()
     }
 }
@@ -22,7 +23,7 @@ function createSelectedCourseTable() {
                             <th style="width:25%">شماره دانشجویی</th>
                             <th style="width:25%">نام و نام‌خانوادگی دانشجو</th>
                             <th style="width:25%">نام درس (تعداد واحد)</th>
-                            <th>معدل</th>
+                            <th>نمره درس</th>
                             <th style="width:10%">عملیات</th>
                         </tr>
                 `
@@ -49,6 +50,8 @@ function resetSlcForm() {
     document.getElementById("slcGrade").value = ""
     document.getElementById("slcIndex").value = ""
     document.getElementById("slcAlert").innerHTML = ""
+    document.getElementById("slcStuCode").disabled = false
+    document.getElementById("addSelectCourse").style.display = "none"  
 }
 
 function saveSelectedCourse() {
@@ -84,6 +87,7 @@ function deleteSelectedCourse(slcIndex) {
 
         if (slcArr.length < 1) {
             document.getElementById("slcListTbl").innerHTML = ""
+            createStudentList()
         } else {
             createSelectedCourseList()
         }

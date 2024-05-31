@@ -1,4 +1,17 @@
-insArr = []
+insArr = [
+    {
+        "insCode": "90001",
+        "insName": "سجاد پیراهش"
+    },
+    {
+        "insCode": "90002",
+        "insName": "نسیم ارغا"
+    },
+    {
+        "insCode": "90003",
+        "insName": "مهدی میرزابکی"
+    }
+]
 
 class Instructor {
     constructor(insCode, insName) {
