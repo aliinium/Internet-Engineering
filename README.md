@@ -1,2 +1,2 @@
 # Internet-Engineering
- 
+As a student enrolled in the Internet Engineering course at Islamic Azad University of Tabriz, this repository serves as a dedicated space for my assignments and exercises under the guidance of Mr. Sajjad Pirahesh. Here, you'll find a variety of practical exercises and resources designed to deepen our understanding of both front-end and back-end development. This includes topics such as web design, user interfaces, server-side programming, databases, and the integration of various web technologies to build robust and scalable internet applications.
